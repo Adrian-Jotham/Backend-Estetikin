@@ -39,7 +39,7 @@ exports.login = async (req, res) => {
                     httpOnly: true
                 }
                 res.cookie('userSave', token, cookieOptions);
-                res.status(200).redirect("/").json({
+                res.status(200).json({
                     status : 'success',
                     message : 'successful login'
                 });
@@ -47,6 +47,7 @@ exports.login = async (req, res) => {
         })
     } catch (err) {
         console.log(err);
+        console.log('gajalan bro')
     }
 }
 exports.register = (req, res) => {
@@ -117,5 +118,8 @@ exports.logout = (req, res) => {
         expires: new Date(Date.now() + 2 * 1000),
         httpOnly: true
     });
-    res.status(200).redirect("/");
+    res.status(200).json({
+                    status : 'success',
+                    message : 'account registered'
+                });
 }
