@@ -12,6 +12,8 @@ const db = mysql.createConnection({
 
 exports.login = async (req, res) => {
     try {
+        console.log(req.body.email);
+        console.log(req.body.password);
         const { email, password } = req.body;
         if (!email || !password) {
             return res.status(400).json({status : 'invalid input'})
@@ -93,31 +95,50 @@ exports.register = (req, res) => {
 }
 
 exports.isLoggedIn = async (req, res, next) => {
-    if (req.cookies.userSave) {
-        try {
-            // 1. Verify the token
-            const decoded = await promisify(jwt.verify)(req.cookies.userSave,
-                process.env.JWT_SECRET
-            );
-            console.log(decoded);
-
-            // 2. Check if the user still exist
-            db.query('SELECT * FROM users WHERE id = ?', [decoded.id], (err, results) => {
-                console.log(results);
-                if (!results) {
-                    return next();
-                }
-                req.user = results[0];
-                return next();
+    console.log('isLoggedIn middleware executed');
+    try {
+      if (req.cookies.userSave) {
+        // 1. Verify the token
+        const decoded = jwt.verify(req.cookies.userSave, process.env.JWT_SECRET);
+  
+        // 2. Check if the user still exists
+        db.query('SELECT * FROM users WHERE id = ?', [decoded.id], (err, results) => {
+          if (err) {
+            console.log(err);
+            return res.status(500).json({
+              status: 'failed',
+              message: 'Internal server error',
             });
-        } catch (err) {
-            console.log(err)
-            return next();
-        }
-    } else {
-        next();
+          }
+  
+          if (!results || results.length === 0) {
+            return res.status(401).json({
+              status: 'failed',
+              message: 'Invalid token',
+            });
+          }
+  
+          // 3. Store the user information in the request object
+          req.user = results[0];
+  
+          // Continue to the next middleware or route handler
+          next();
+        });
+      } else {
+        // No token found, user is not logged in
+        return res.status(401).json({
+          status: 'failed',
+          message: 'Unauthorized',
+        });
+      }
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json({
+        status: 'failed',
+        message: 'Internal server error',
+      });
     }
-}
+  };
 exports.logout = (req, res) => {
     res.cookie('userSave', 'logout', {
         expires: new Date(Date.now() + 2 * 1000),

@@ -10,7 +10,6 @@ const upload = multer();
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
-app.use(upload.none()); // Parse form-data
 app.use(cookieParser());
 
 const db = mysql.createConnection({
@@ -29,9 +28,11 @@ db.connect((err) => {
 })
 
 // Define Routes
-// app.use('/', require('./routes/pages'));
-app.use('/auth', require('./routes/auth'));
+app.use('/auth', (req, res, next) => {
+    upload.none()(req, res, next);
+}, require('./routes/auth'));
+
 app.use('/upload', require('./routes/routes'));
 app.use('/module', require('./routes/module'));
 
-app.listen(5000)
+app.listen(5000);
