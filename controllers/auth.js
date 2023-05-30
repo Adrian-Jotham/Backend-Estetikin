@@ -41,7 +41,8 @@ exports.login = async (req, res) => {
                 res.cookie('userSave', token, cookieOptions);
                 res.status(200).json({
                     status : 'success',
-                    message : 'successful login'
+                    message : 'successful login',
+                    token : token
                 });
             }
         })
