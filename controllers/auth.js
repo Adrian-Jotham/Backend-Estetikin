@@ -53,6 +53,10 @@ exports.login = async (req, res) => {
 exports.register = (req, res) => {
     console.log(req.body);
     const { name, email, password, passwordConfirm } = req.body;
+    console.log(req.body.name); // Access form-data fields
+    console.log(req.body.email);
+    console.log(req.body.password);
+    console.log(req.body.passwordConfirm);
     db.query('SELECT email from users WHERE email = ?', [email], async (err, results) => {
         if (err) {
             console.log(err);

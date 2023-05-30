@@ -4,10 +4,13 @@ const mysql = require("mysql");
 const app = express();
 const dotenv = require("dotenv").config();
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const upload = multer();
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
+app.use(upload.none()); // Parse form-data
 app.use(cookieParser());
 
 const db = mysql.createConnection({
