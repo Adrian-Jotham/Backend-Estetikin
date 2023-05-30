@@ -32,5 +32,6 @@ db.connect((err) => {
 // app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 app.use('/upload', require('./routes/routes'));
+app.use('/module', require('./routes/module'));
 
 app.listen(5000)
