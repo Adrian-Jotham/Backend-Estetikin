@@ -22,7 +22,7 @@ exports.login = async (req, res) => {
             console.log(results);
             if (!results || !await bcrypt.compare(password, results[0].password)) {
                 res.status(401).json({
-                    status : 'failed',
+                    error : true,
                     message : 'Email or Password is incorrect'
                 })
             } else {
@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
                 }
                 res.cookie('userSave', token, cookieOptions);
                 res.status(200).json({
-                    status : 'success',
+                    error : false,
                     message : 'successful login',
                     token : token
                 });
@@ -66,12 +66,12 @@ exports.register = (req, res) => {
         } else {
             if (results.length > 0) {
                 return res.status(503).json({
-                    status : 'failed',
+                    error : true,
                     message : 'email already used'
                 })
             } else if (password != passwordConfirm) {
                 return res.status(504).json({
-                    status : 'failed',
+                    error : true,
                     message : 'password do not match'
                 })
             }
@@ -85,7 +85,7 @@ exports.register = (req, res) => {
                 console.log(err);
             } else {
                 return res.status(200).json({
-                    status : 'success',
+                    error : false,
                     message : 'account registered'
                 });
             }
