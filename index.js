@@ -34,5 +34,7 @@ app.use('/auth', (req, res, next) => {
 
 app.use('/upload', require('./routes/routes'));
 app.use('/module', require('./routes/module'));
-
-app.listen(5000);
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`App is running on port ${port}`);
+});

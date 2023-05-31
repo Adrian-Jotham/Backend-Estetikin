@@ -6,5 +6,4 @@ const router = express.Router();
 
 router.post('/upload', isLoggedIn, userController.uploadImage);
 router.get('/protected',isLoggedIn,userController.protectedRoute);
-
 module.exports = router;

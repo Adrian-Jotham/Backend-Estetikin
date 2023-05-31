@@ -149,3 +149,9 @@ exports.logout = (req, res) => {
                     message : 'account registered'
                 });
 }
+exports.test = (req, res) => {
+    res.status(200).json({
+        status : 'success',
+        message : 'tested'
+    });
+};
