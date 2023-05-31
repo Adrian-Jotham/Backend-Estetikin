@@ -5,6 +5,21 @@ exports.data =
             title : 'ini judul 1',
             description : 'ini deskripsi dari si judulnya',
             genre : 'hardcore',
+            content : 
+            [
+                {
+                    id : 1,
+                    title : 'arahkan titit anda',
+                    description: 'make sure bla bl bla',
+                    url : 'https://keren235',
+                },
+                {
+                    id : 2,
+                    title : 'arahkan titit anda',
+                    description: 'make sure bla bl bla',
+                    url : 'https://keren235',
+                }
+            ],
             url : 'https://keren123'
         },
         {
@@ -12,6 +27,10 @@ exports.data =
             title : 'ini judul 2',
             description : 'ini deskripsi dari si judulnya',
             genre : 'hardcore',
+            step : {
+                1 : 'jdkfgjkdfjg',
+                2 : 'jfdisghhsguh',
+            },
             url : 'https://keren123'
         },
         {
