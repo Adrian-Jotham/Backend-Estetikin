@@ -18,7 +18,13 @@ const db = mysql.createConnection({
     password: process.env.PASSWORD_PASS,
     database: process.env.DATABASE
 });
-
+// const db = mysql.createPool({
+//     connectionLimit: 10,
+//     user: process.env.DATABASE_USER,
+//     password: process.env.PASSWORD,
+//     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
+//     database: 'nodejs-database',
+// });
 db.connect((err) => {
     if (err) {
         console.log(err);
