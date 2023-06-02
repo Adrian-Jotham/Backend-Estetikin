@@ -3,12 +3,21 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { promisify } = require("util");
 
-const db = mysql.createConnection({
-    host: process.env.HOST,
+const db = mysql.createPool({
+    connectionLimit: 10,
     user: process.env.DATABASE_USER,
     password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
+    database: 'nodejs-database',
 });
+
+// const db = mysql.createConnection({
+//     // host: process.env.HOST,
+//     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
+//     user: process.env.DATABASE_USER,
+//     password: process.env.PASSWORD,
+//     database: process.env.DATABASE
+// });
 
 exports.login = async (req, res) => {
     try {
@@ -18,7 +27,7 @@ exports.login = async (req, res) => {
         if (!email || !password) {
             return res.status(400).json({status : 'invalid input'})
         }
-        db.query('SELECT * FROM users WHERE email = ?', [email], async (err, results) => {
+        db.query('SELECT * FROM user WHERE email = ?', [email], async (err, results) => {
             console.log(results);
             if (!results || !await bcrypt.compare(password, results[0].password)) {
                 res.status(401).json({
@@ -60,7 +69,7 @@ exports.register = (req, res) => {
     console.log(req.body.email);
     console.log(req.body.password);
     console.log(req.body.passwordConfirm);
-    db.query('SELECT email from users WHERE email = ?', [email], async (err, results) => {
+    db.query('SELECT email from user WHERE email = ?', [email], async (err, results) => {
         if (err) {
             console.log(err);
         } else {
@@ -80,7 +89,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO users SET ?', { name: name, email: email, password: hashedPassword }, (err, results) => {
+        db.query('INSERT INTO user SET ?', { name: name, email: email, password: hashedPassword }, (err, results) => {
             if (err) {
                 console.log(err);
             } else {
@@ -102,7 +111,7 @@ exports.isLoggedIn = async (req, res, next) => {
         const decoded = jwt.verify(req.cookies.userSave, process.env.JWT_SECRET);
   
         // 2. Check if the user still exists
-        db.query('SELECT * FROM users WHERE id = ?', [decoded.id], (err, results) => {
+        db.query('SELECT * FROM user WHERE id = ?', [decoded.id], (err, results) => {
           if (err) {
             console.log(err);
             return res.status(500).json({
