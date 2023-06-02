@@ -9,13 +9,13 @@ exports.data =
             [
                 {
                     id : 1,
-                    title : 'arahkan titit anda',
+                    title : 'arahkan kamera anda',
                     description: 'make sure bla bl bla',
                     url : 'https://keren235',
                 },
                 {
                     id : 2,
-                    title : 'arahkan titit anda',
+                    title : 'arahkan kamera anda',
                     description: 'make sure bla bl bla',
                     url : 'https://keren235',
                 }
