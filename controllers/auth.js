@@ -10,12 +10,14 @@ const { promisify } = require("util");
 //     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
 //     database: 'nodejs-database',
 // });
+
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.PASSWORD_PASS,
     database: process.env.DATABASE
 });
+
 // const db = mysql.createConnection({
 //     // host: process.env.HOST,
 //     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
@@ -160,6 +162,6 @@ exports.logout = (req, res) => {
     });
     res.status(200).json({
                     status : 'success',
-                    message : 'account registered'
+                    message : 'account logout'
                 });
 }
