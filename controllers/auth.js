@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const { promisify } = require("util");
 
+
 const db = mysql.createPool({
     connectionLimit: 10,
     user: process.env.DATABASE_USER,
