@@ -1,8 +1,8 @@
 
 exports.landing = (req, res) => {
     return res.status(200).json(
-        {status : 'This is landing page',
+        {status : 'This is landing page \n selamat datang di landing pagenya cuy',
         error : false,
-    }
+        }
     )
 } 

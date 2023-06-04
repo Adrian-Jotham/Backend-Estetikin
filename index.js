@@ -40,7 +40,7 @@ app.use('/auth', (req, res, next) => {
 
 app.use('/upload', require('./routes/routes'));
 app.use('/module', require('./routes/module'));
-app.use('/', require('./routes/auth'));
+app.use('/', require('./routes/landingtest'));
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
