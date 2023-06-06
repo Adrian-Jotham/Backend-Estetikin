@@ -3,35 +3,35 @@ exports.data =
         {
             id : 1,
             tag : 'Android',
-            title : 'ini judul 1',
+            title : 'Belajar Memfokuskan Lensa Kamera',
             description : 'ini deskripsi dari si judulnya',
             genre : 'hardcore',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/BungaPink.JPG',
             content : 
                 [
                     {
                         id : 1,
-                        title : 'step 1',
-                        description : 'arahkan kamera anda',
-                        url : 'https://anjay.com'
+                        title : 'Buka aplikasi kamera pada device yang anda gunakan',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/EvanJotham.JPG'
                     },
                     {
                         id:2,
-                        title : 'step 2',
-                        description : 'fokuskan dan tengahkan kamera anda',
-                        url : 'https://anjay2.com'
+                        title : 'Tekan layar anda pada bagian gambar yang ingin diambil',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/IgelBobo.JPG'
                     },
                     {
                         id:3,
-                        title : 'step 3',
-                        description : 'Tangkap hasil kamera anda',
-                        url : 'https://anjay2.com'
+                        title : 'Setelah kamera sudah memberi preview gambar yang lebih jernih, tekan tombol shutter.',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
                     },
                     {
                         id:4,
-                        title : 'step 4',
-                        description : 'Review hasil jepretan anda',
-                        url : 'https://anjay2.com'
+                        title : 'Gambar dengan lensa fokus telah berhasil ditangkap.',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
                     },
                 ],
         },
