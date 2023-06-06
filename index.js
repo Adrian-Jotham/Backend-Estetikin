@@ -37,12 +37,15 @@ db.connect((err) => {
 app.use('/auth', (req, res, next) => {
     upload.none()(req, res, next);
 }, require('./routes/auth'));
+
 app.use('/album', (req, res, next) => {
     upload.none()(req, res, next);
 }, require('./routes/album'));
 
 app.use('/upload', require('./routes/routes'));
 app.use('/module', require('./routes/module'));
+app.use('/articles', require('./routes/artikel'));
+
 app.use('/', require('./routes/landingtest'));
 
 const port = process.env.PORT || 8080;
