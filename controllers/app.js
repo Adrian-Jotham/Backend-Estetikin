@@ -9,6 +9,7 @@ const db = mysql.createConnection({
     password: process.env.PASSWORD_PASS,
     database: process.env.DATABASE
 });
+
 exports.uploadImage = (req, res) => {
   upload.single('image')(req, res, (err) => {
     if (err) {
@@ -17,7 +18,11 @@ exports.uploadImage = (req, res) => {
     }
     
     console.log(req.body.email);
-    const { email } = req.body;
+    console.log(req.body.class1);
+    console.log(req.body.class2);
+    console.log(req.body.class3);
+    console.log(req.body.class4);
+    const { email,class1,class2,class3,class4 } = req.body;
     
     db.connect((error) => {
       if (error) {
@@ -41,12 +46,12 @@ exports.uploadImage = (req, res) => {
         const fileBuffer = req.file.buffer;
         const test = count + 1;
         console.log(test);
-        const fileName = test + '.jpg';
+        const fileName = test + '.jpeg';
         const link = 'https://storage.googleapis.com/test-gambar-estetikin123/' + test + '.jpeg';
         const currentDate = new Date();
         const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
         
-        db.query('INSERT INTO imagealbum SET ?', { user_email: email, date_upload: formattedDate, link: link }, (err, results) => {
+        db.query('INSERT INTO imagealbum SET ?', { user_email: email, date_upload: formattedDate, link: link, class1: class1, class2: class2, class3: class3, class4: class4 }, (err, results) => {
           if (err) {
             console.log(err);
             db.end();
@@ -69,6 +74,8 @@ exports.uploadImage = (req, res) => {
     });
   });
 };
+
+
 async function uploadToGCS(fileBuffer, fileName) {
   const storage = new Storage();
   const bucket = storage.bucket('test-gambar-estetikin123');
@@ -77,58 +84,23 @@ async function uploadToGCS(fileBuffer, fileName) {
   console.log(`File ${fileName} uploaded to GCS`);
 }
 
-
-
-// const { Storage } = require('@google-cloud/storage');
-
-// exports.uploadImage = async (req, res) => {
-//   console.log(req.image);
-//   if (!req.file) {
-//     return res.status(400).json({ error: 'No file uploaded' });
-//   }
-//   try {
-//     const image = req.image;
-//     const imgBuffer = image.buffer;
-//     const imgName = image.originalname;
-//     await uploadCloud(imgBuffer, imgName);
-//     res.json({ error: false, status: 'success', message: 'Image uploaded' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: true, status: 'Upload failed' });
-//   }
-// };
-// async function uploadCloud(buffer, name) {
-//   const storage = new Storage();
-//   const bucket = storage.bucket('test-gambar-estetikin123');
-//   const file = bucket.file(name);
-//   await file.save(buffer);
-//   console.log(`Image ${name} uploaded`);
-// }
-
-//Local Storage File Upload
-// const multer = require('multer');
-
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'static/'); 
-//   },
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname); 
-//   }
-// });
-
-// const upload = multer({ storage });
-
-// exports.uploadImage = (req, res) => {
-//   upload.single('image')(req, res, (err) => {
-//     if (err) {
-//       console.error(err);
-//       return res.status(500).json({ error: 'Failed to upload image' });
-//     }
-
-//     res.json({ status: 'success', message: 'Image uploaded successfully' });
-//   });
-// };
+exports.album = (req,res) => {
+  const {email} =req.body
+  console.log(email);
+  db.query('SELECT * FROM imagealbum WHERE user_email = ? ORDER BY date_upload DESC', [email], async (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: true,message:"Failed to GET Album from DB" });
+    }
+    const arrAlbum = [];
+    for (const row of results){
+      const {date_upload,link,class1,class2,class3,class4}=row;
+      arrAlbum.push({date_upload,link,class1,class2,class3,class4});
+    }
+    console.log(arrAlbum);
+    return res.status(200).json({error:false, status: 'success', message: 'Album GET Successful',arrAlbum });
+  });
+};
 
 exports.protectedRoute = (req, res) => {
   res.send('You are accessing a protected route');
