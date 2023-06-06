@@ -1,4 +1,3 @@
-
 const modulesData = require('./moduledata')
 
 const getStories = async (req, res) => {
