@@ -1,31 +1,12 @@
 const mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const { promisify } = require("util");
-
-// const db = mysql.createPool({
-//     connectionLimit: 10,
-//     user: process.env.DATABASE_USER,
-//     password: process.env.PASSWORD,
-//     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
-//     database: 'nodejs-database',
-// });
-
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
     password: process.env.PASSWORD_PASS,
     database: process.env.DATABASE
 });
-
-// const db = mysql.createConnection({
-//     // host: process.env.HOST,
-//     socketPath: '/cloudsql/estetikin:asia-southeast2:estetikin-db-protect',
-//     user: process.env.DATABASE_USER,
-//     password: process.env.PASSWORD,
-//     database: process.env.DATABASE
-// });
-
 exports.login = async (req, res) => {
     try {
         console.log(req.body.email);
@@ -51,8 +32,9 @@ exports.login = async (req, res) => {
                 })
             } else {
                 const id = results[0].id;
+                const email=results[0].email;
 
-                const token = jwt.sign({ id }, process.env.JWT_SECRET, {
+                const token = jwt.sign({ id,email }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
                 });
 
@@ -138,6 +120,7 @@ exports.register = (req, res) => {
 
 exports.isLoggedIn = async (req, res, next) => {
     console.log('isLoggedIn middleware executed');
+    console.log(req.headers.authorization);
     try {
         const authorizationHeader = req.headers.authorization;
         if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
