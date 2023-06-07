@@ -31,8 +31,16 @@ exports.login = async (req, res) => {
         console.log(req.body.email);
         console.log(req.body.password);
         const { email, password } = req.body;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^.{8,}$/;
+        if (!emailRegex.test(email)) {
+            return res.status(400).json({ error:'true', message: 'invalid email format' });
+        };
+        if (!passwordRegex.test(password)) {
+            return res.status(400).json({ error:'true', message: 'invalid password format' });
+        };
         if (!email || !password) {
-            return res.status(400).json({status : 'invalid input'})
+            return res.status(400).json({status : 'invalid input'});
         }
         db.query('SELECT * FROM user WHERE email = ?', [email], async (err, results) => {
             console.log(results);
@@ -76,6 +84,24 @@ exports.register = (req, res) => {
     console.log(req.body.email);
     console.log(req.body.password);
     console.log(req.body.passwordConfirm);
+
+    const passwordConfirmRegex = /^.{8,}$/;
+    const nameRegex = /^.{1,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^.{8,}$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error:'true', message: 'invalid email format' });
+    };
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({ error:'true', message: 'invalid password format' });
+    };
+    if (!nameRegex.test(name)) {
+        return res.status(400).json({ error:'true', message: 'invalid name format' });
+    };
+    if (!passwordConfirmRegex.test(passwordConfirm)) {
+        return res.status(400).json({ error:'true', message: 'invalid passwordConfirm format' });
+    };
+
     db.query('SELECT email from user WHERE email = ?', [email], async (err, results) => {
         if (err) {
             console.log(err);

@@ -42,7 +42,7 @@ app.use('/album', (req, res, next) => {
     upload.none()(req, res, next);
 }, require('./routes/album'));
 
-app.use('/upload', require('./routes/routes'));
+app.use('/upload', require('./routes/upload'));
 app.use('/module', require('./routes/module'));
 app.use('/articles', require('./routes/artikel'));
 
