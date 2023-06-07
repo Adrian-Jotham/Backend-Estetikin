@@ -152,7 +152,14 @@ exports.isLoggedIn = async (req, res, next) => {
               message: 'Internal server error',
             });
           }
-  
+          //Check token expiration.
+          if (decoded.exp < Date.now() / 1000) {
+            return res.status(401).json({
+              error: true,
+              status: 'failed',
+              message: 'Token has expired',
+            });
+          }
           if (!results || results.length === 0) {
             return res.status(401).json({
               status: 'failed',
