@@ -139,10 +139,11 @@ exports.register = (req, res) => {
 exports.isLoggedIn = async (req, res, next) => {
     console.log('isLoggedIn middleware executed');
     try {
-      if (req.cookies.userSave) {
-        // 1. Verify the token
-        const decoded = jwt.verify(req.cookies.userSave, process.env.JWT_SECRET);
-  
+        const authorizationHeader = req.headers.authorization;
+        if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
+          const token = authorizationHeader.split(' ')[1];
+          // 1. Verify the token
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         // 2. Check if the user still exists
         db.query('SELECT * FROM user WHERE id = ?', [decoded.id], (err, results) => {
           if (err) {

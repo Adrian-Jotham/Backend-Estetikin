@@ -1,3 +1,3 @@
 # Backend-Estetikin
 Simple Estetikin Backend
-maddde by Adrian and Evan
+made by Adrian and Evan

@@ -2,6 +2,7 @@ const artikelData = require('./artikeldata')
 
 const getArticle = (req, res) => {
     console.log(req.params);
+    console.log(req.token);
     const { type }  = req.params;
     console.log(type);
     if (type === 'all'){
