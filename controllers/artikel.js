@@ -1,6 +1,7 @@
 const artikelData = require('./artikeldata')
 
 const getArticle = (req, res) => {
+    try{
     console.log(req.params);
     console.log(req.token);
     const { type }  = req.params;
@@ -45,6 +46,11 @@ const getArticle = (req, res) => {
     //         error : false,
     //         data: artikelData.artikelVideo,
     //     })
+}
+    catch (err) {
+        console.log(err);
+        console.log('Article Handler Error')
+    }
 };
 
 module.exports = { getArticle }

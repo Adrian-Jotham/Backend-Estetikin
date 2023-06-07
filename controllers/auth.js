@@ -56,10 +56,11 @@ exports.login = async (req, res) => {
         })
     } catch (err) {
         console.log(err);
-        console.log('gajalan bro')
+        console.log('Login handler Error')
     }
 }
 exports.register = (req, res) => {
+    try {
     console.log(req.body);
     const { name, email, password, passwordConfirm } = req.body;
     console.log(req.body.name); // Access form-data fields
@@ -116,6 +117,10 @@ exports.register = (req, res) => {
         })
     })
     // res.send("Form submitted");
+} catch (err) {
+    console.log(err);
+    console.log('Register handler Error')
+}
 }
 
 exports.isLoggedIn = async (req, res, next) => {
