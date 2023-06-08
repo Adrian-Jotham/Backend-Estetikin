@@ -1,10 +1,11 @@
 const mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const db = mysql.createConnection({
+const db = mysql.createPool({
+    connectionLimit: 10,
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
-    password: process.env.PASSWORD_PASS,
+    password: process.env.DATABASE_PASS,
     database: process.env.DATABASE
 });
 exports.login = async (req, res) => {
@@ -122,56 +123,56 @@ exports.isLoggedIn = async (req, res, next) => {
     console.log('isLoggedIn middleware executed');
     console.log(req.headers.authorization);
     try {
-        const authorizationHeader = req.headers.authorization;
-        if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
-          const token = authorizationHeader.split(' ')[1];
-          // 1. Verify the token
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        // 2. Check if the user still exists
-        db.query('SELECT * FROM user WHERE id = ?', [decoded.id], (err, results) => {
-          if (err) {
-            console.log(err);
-            return res.status(500).json({
-              status: 'failed',
-              message: 'Internal server error',
+            const authorizationHeader = req.headers.authorization;
+            if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
+            const token = authorizationHeader.split(' ')[1];
+            // 1. Verify the token
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            // 2. Check if the user still exists
+            db.query('SELECT * FROM user WHERE id = ?', [decoded.id], (err, results) => {
+            if (err) {
+                console.log(err);
+                return res.status(500).json({
+                status: 'failed',
+                message: 'Internal server error',
+                });
+            }
+            //Check token expiration.
+            if (decoded.exp < Date.now() / 1000) {
+                return res.status(401).json({
+                error: true,
+                status: 'failed',
+                message: 'Token has expired',
+                });
+            }
+            if (!results || results.length === 0) {
+                return res.status(401).json({
+                status: 'failed',
+                message: 'Invalid token',
+                });
+            }
+    
+            // 3. Store the user information in the request object
+            req.user = results[0];
+    
+            // Continue to the next middleware or route handler
+            next();
             });
-          }
-          //Check token expiration.
-          if (decoded.exp < Date.now() / 1000) {
+        } else {
+            // No token found, user is not logged in
             return res.status(401).json({
-              error: true,
-              status: 'failed',
-              message: 'Token has expired',
+            status: 'failed',
+            message: 'Unauthorized',
             });
-          }
-          if (!results || results.length === 0) {
-            return res.status(401).json({
-              status: 'failed',
-              message: 'Invalid token',
-            });
-          }
-  
-          // 3. Store the user information in the request object
-          req.user = results[0];
-  
-          // Continue to the next middleware or route handler
-          next();
+        }
+        } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            status: 'failed',
+            message: 'Internal server error',
         });
-      } else {
-        // No token found, user is not logged in
-        return res.status(401).json({
-          status: 'failed',
-          message: 'Unauthorized',
-        });
-      }
-    } catch (err) {
-      console.log(err);
-      return res.status(500).json({
-        status: 'failed',
-        message: 'Internal server error',
-      });
-    }
-  };
+        }
+    };
 exports.logout = (req, res) => {
     res.cookie('userSave', 'logout', {
         expires: new Date(Date.now() + 2 * 1000),
