@@ -34,7 +34,7 @@ db.connect((err) => {
 })
 
 // Define Routes
-app.use('/auth', (req, res, next) => {
+app.use('/auth/v1', (req, res, next) => {
     upload.none()(req, res, next);
 }, require('./routes/auth'));
 
@@ -45,7 +45,7 @@ app.use('/album', (req, res, next) => {
 app.use('/upload', require('./routes/upload'));
 app.use('/module', require('./routes/module'));
 app.use('/articles', require('./routes/artikel'));
-
+app.use('/api/v1',require('./routes/api'));
 app.use('/', require('./routes/landingtest'));
 
 const port = process.env.PORT || 8080;

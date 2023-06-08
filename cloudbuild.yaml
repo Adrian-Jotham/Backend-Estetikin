@@ -1,5 +1,5 @@
 steps:
-  - name: 'node:14'
+  - name: 'node:18'
     entrypoint: 'npm'
     args: ['install']
 

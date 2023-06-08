@@ -5,5 +5,4 @@ const router = express.Router();
 
 
 router.get('/album',isLoggedIn,albumController.album);
-
 module.exports = router;
