@@ -5,8 +5,8 @@ env_variables:
   NODE_ENV: production
   # INSTANCE_UNIX_SOCKET: /cloudsql/estetikin:asia-southeast2:estetikin-db-protect
   DATABASE_HOST: 34.128.65.81
-  DATABASE_USER: adminku
-  DATABASE_PASS:
+  DATABASE_USER: Pr0x1miTy!321?
+  DATABASE_PASS: 1k5ygbfuyA
   JWT_SECRET: jothamganteng
   JWT_EXPIRES_IN: 90d
   JWT_COOKIE_EXPIRES: 90
