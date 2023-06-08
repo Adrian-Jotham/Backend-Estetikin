@@ -11,6 +11,7 @@ const db = mysql.createConnection({
 });
 
 exports.uploadImage = (req, res) => {
+  try{
   upload.single('image')(req, res, (err) => {
     if (err) {
       console.error(err);
@@ -73,6 +74,10 @@ exports.uploadImage = (req, res) => {
       });
     });
   });
+} catch (err) {
+  console.log(err);
+  console.log('Register handler Error')
+};
 };
 
 
@@ -83,24 +88,6 @@ async function uploadToGCS(fileBuffer, fileName) {
   await file.save(fileBuffer);
   console.log(`File ${fileName} uploaded to GCS`);
 }
-
-exports.album = (req,res) => {
-  const {email} =req.body
-  console.log(email);
-  db.query('SELECT * FROM imagealbum WHERE user_email = ? ORDER BY date_upload DESC', [email], async (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: true,message:"Failed to GET Album from DB" });
-    }
-    const arrAlbum = [];
-    for (const row of results){
-      const {date_upload,link,class1,class2,class3,class4}=row;
-      arrAlbum.push({date_upload,link,class1,class2,class3,class4});
-    }
-    console.log(arrAlbum);
-    return res.status(200).json({error:false, status: 'success', message: 'Album GET Successful',arrAlbum });
-  });
-};
 
 exports.protectedRoute = (req, res) => {
   res.send('You are accessing a protected route');

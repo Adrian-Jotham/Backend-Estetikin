@@ -45,7 +45,7 @@ exports.login = async (req, res) => {
                     expires: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                     ),
-                    httpOnly: true
+                    // httpOnly: true
                 }
                 res.cookie('userSave', token, cookieOptions);
                 res.status(200).json({
@@ -57,10 +57,11 @@ exports.login = async (req, res) => {
         })
     } catch (err) {
         console.log(err);
-        console.log('gajalan bro')
+        console.log('Login handler Error')
     }
 }
 exports.register = (req, res) => {
+    try {
     console.log(req.body);
     const { name, email, password, passwordConfirm } = req.body;
     console.log(req.body.name); // Access form-data fields
@@ -117,6 +118,10 @@ exports.register = (req, res) => {
         })
     })
     // res.send("Form submitted");
+} catch (err) {
+    console.log(err);
+    console.log('Register handler Error')
+}
 }
 
 exports.isLoggedIn = async (req, res, next) => {

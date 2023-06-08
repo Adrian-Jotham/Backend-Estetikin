@@ -7,6 +7,7 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 exports.album = (req,res) => {
+  try{
     const authorizationHeader = req.headers.authorization;
     const token = authorizationHeader.split(' ')[1];
     const decoded = jwt.decode(token, process.env.JWT_SECRET);
@@ -26,4 +27,9 @@ exports.album = (req,res) => {
       console.log(arrAlbum);
       return res.status(200).json({error:false, status: 'success', message: 'Album Successfuly Retrieved',arrAlbum });
     });
+  }
+    catch (err) {
+      console.log(err);
+      console.log('Album Handler Error')
+  }
   };
