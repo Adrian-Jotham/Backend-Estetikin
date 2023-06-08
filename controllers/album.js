@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
-    password: process.env.PASSWORD_PASS,
+    password: process.env.DATABASE_PASS,
     database: process.env.DATABASE
 });
 exports.album = (req,res) => {
@@ -21,8 +21,25 @@ exports.album = (req,res) => {
       const arrAlbum = [];
       for (const row of results){
         const {date_upload,link,class1,class2,class3,class4}=row;
-        const dummytext="Foto anda Blur!\n Coba Fokuskan kamera anda ke objek dan hindari objek yang bergerak terlalu cepat.";
-        arrAlbum.push({date_upload,link,dummytext});
+        const datefor = new Date(date_upload);
+        const formattedDate = datefor.toLocaleString("en-US", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+          hour: "2-digit",
+          minute: "2-digit",
+        });
+        function getRandomText() {
+          if (Math.random() < 0.5) {
+            return "Foto anda Blur!\n Coba Fokuskan kamera anda ke objek dan hindari objek yang bergerak terlalu cepat.";
+          } else {
+            return "Foto anda Gelap\n Coba naikkan ISO kamera anda atau aktifkan flash anda.";
+          }
+        }
+        // Example usage
+        const dummytext = getRandomText();
+        console.log(dummytext);
+        arrAlbum.push({formattedDate,link,dummytext});
       }
       console.log(arrAlbum);
       return res.status(200).json({error:false, status: 'success', message: 'Album Successfuly Retrieved',arrAlbum });
