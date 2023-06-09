@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/module',isLoggedIn,moduleController.getStories);
 router.get('/album',isLoggedIn,albumController.album);
-router.get('/:type',isLoggedIn,articleController.getArticle);
+router.get('/article/:type',isLoggedIn,articleController.getArticle);
 router.post('/upload', isLoggedIn, uploadController.uploadImage);
 router.get('/protected',isLoggedIn,uploadController.protectedRoute);
 
