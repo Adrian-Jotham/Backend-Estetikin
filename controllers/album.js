@@ -35,8 +35,7 @@ exports.album = (req,res) => {
           } else {
             return "Foto anda Gelap\n Coba naikkan ISO kamera anda atau aktifkan flash anda.";
           }
-        }
-        // Example usage
+        }        
         const dummytext = getRandomText();
         console.log(dummytext);
         arrAlbum.push({formattedDate,link,dummytext});
