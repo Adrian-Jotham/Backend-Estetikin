@@ -59,7 +59,11 @@ exports.login = async (req, res) => {
         })
     } catch (err) {
         console.log(err);
-        console.log('Login handler Error')
+        console.log('Login handler Error');
+        return res.status(501).json(
+            {message : 'server error for login',
+            error : true,
+        })
     }
 }
 exports.register = (req, res) => {
@@ -128,6 +132,10 @@ exports.register = (req, res) => {
 } catch (err) {
     console.log(err);
     console.log('Register handler Error')
+    return res.status(501).json(
+            {message : 'server error for register',
+            error : true,
+        })
 }
 }
 

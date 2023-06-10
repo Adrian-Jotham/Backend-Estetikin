@@ -6,7 +6,7 @@ const uploadController = require('../controllers/upload');
 const express = require("express");
 const router = express.Router();
 
-router.get('/module',isLoggedIn,moduleController.getStories);
+router.get('/module',isLoggedIn,moduleController.getModules);
 router.get('/album',isLoggedIn,albumController.album);
 router.get('/article/:type',isLoggedIn,articleController.getArticle);
 router.post('/upload', isLoggedIn, uploadController.uploadImage);

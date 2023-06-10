@@ -4,7 +4,7 @@ const moduleController = require("../controllers/module.js");
 const { isLoggedIn } = require('../controllers/auth');
 const router = express.Router();
 
-router.get('/module',isLoggedIn,moduleController.getStories);
+router.get('/module',isLoggedIn,moduleController.getModules);
 
 
 module.exports = router;

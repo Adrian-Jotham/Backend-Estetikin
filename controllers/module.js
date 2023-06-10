@@ -1,11 +1,11 @@
 const modulesData = require('./moduledata')
 
-const getStories = async (req, res) => {
+const getModules = async (req, res) => {
     return res.status(200).json(
-        {message : 'get stories, last update June 3th 2023',
+        {message : 'get modules, last update June 10th 2023',
         error : false,
         data: modulesData.data,
     }
 )};
 
-module.exports = { getStories }
+module.exports = { getModules }
