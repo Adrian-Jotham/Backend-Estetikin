@@ -7,6 +7,8 @@ env_variables:
   DATABASE_HOST: 34.128.65.81
   DATABASE_USER: Pr0x1miTy!321?
   DATABASE_PASS: 1k5ygbfuyA
+  MAIL_USER : reset.estetikin@shirologic.online
+  MAIL_PASS : "@99887766Qq"
   JWT_SECRET: jothamganteng
   JWT_resetSECRET: evanganteng
   JWT_EXPIRES_IN: 90d
