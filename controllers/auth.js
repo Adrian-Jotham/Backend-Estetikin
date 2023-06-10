@@ -71,9 +71,13 @@ exports.login = async (req, res) => {
 exports.register = (req, res) => {
     try {
         console.log(req.body);
+        const apikey=req.headers.apikey;
         const { name, nickname, email, password, passwordConfirm } = req.body;
+        if(apikey!=process.env.API_KEY){
+            return res.status(400).json({ error: 'true', message: 'API_KEY Invalid' });
+        }
         console.log(req.body.name); 
-    console.log(req.body.nickname);
+        console.log(req.body.nickname);
         console.log(req.body.email);
         console.log(req.body.password);
         console.log(req.body.passwordConfirm);
