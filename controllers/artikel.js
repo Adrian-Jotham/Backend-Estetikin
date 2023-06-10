@@ -49,7 +49,11 @@ const getArticle = (req, res) => {
 }
     catch (err) {
         console.log(err);
-        console.log('Article Handler Error')
+        console.log('Article Handler Error');
+        return res.status(200).json(
+            {message : 'wrong param for content',
+            error : true,
+        })
     }
 };
 

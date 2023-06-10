@@ -34,6 +34,7 @@ exports.login = async (req, res) => {
             } else {
                 const id = results[0].id;
                 const email=results[0].email;
+                const nickname = results[0].nickname
 
                 const token = jwt.sign({ id,email }, process.env.JWT_SECRET, {
                     expiresIn: process.env.JWT_EXPIRES_IN
@@ -51,7 +52,8 @@ exports.login = async (req, res) => {
                 res.status(200).json({
                     error : false,
                     message : 'successful login',
-                    token : token
+                    token : token,
+                    nickname : nickname
                 });
             }
         })
@@ -63,14 +65,16 @@ exports.login = async (req, res) => {
 exports.register = (req, res) => {
     try {
     console.log(req.body);
-    const { name, email, password, passwordConfirm } = req.body;
-    console.log(req.body.name); // Access form-data fields
+    const { name, nickname, email, password, passwordConfirm } = req.body;
+    console.log(req.body.name); 
+    console.log(req.body.nickname);
     console.log(req.body.email);
     console.log(req.body.password);
     console.log(req.body.passwordConfirm);
 
     const passwordConfirmRegex = /^.{8,}$/;
     const nameRegex = /^.{1,}$/;
+    const nicknameRegex = /^.{1,}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^.{8,}$/;
     if (!emailRegex.test(email)) {
@@ -84,6 +88,9 @@ exports.register = (req, res) => {
     };
     if (!passwordConfirmRegex.test(passwordConfirm)) {
         return res.status(400).json({ error:'true', message: 'invalid passwordConfirm format' });
+    };
+    if (!nicknameRegex.test(nickname)) {
+        return res.status(400).json({ error:'true', message: 'invalid nickname format' });
     };
 
     db.query('SELECT email from user WHERE email = ?', [email], async (err, results) => {
@@ -106,7 +113,7 @@ exports.register = (req, res) => {
         let hashedPassword = await bcrypt.hash(password, 8);
         console.log(hashedPassword);
 
-        db.query('INSERT INTO user SET ?', { name: name, email: email, password: hashedPassword }, (err, results) => {
+        db.query('INSERT INTO user SET ?', { name: name, email: email, password: hashedPassword, nickname: nickname }, (err, results) => {
             if (err) {
                 console.log(err);
             } else {
