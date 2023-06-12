@@ -84,7 +84,7 @@ exports.register = (req, res) => {
 
         const passwordConfirmRegex = /^.{8,}$/;
         const nameRegex = /^.{1,}$/;
-    const nicknameRegex = /^.{1,}$/;
+        const nicknameRegex = /^.{1,}$/;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const passwordRegex = /^.{8,}$/;
         if (!emailRegex.test(email)) {
@@ -243,19 +243,30 @@ exports.forgetpassword = async (req, res) => {
             //<p><a href="${resetUrl}">Reset Password</a></p> 
             html: `
             <!DOCTYPE html>
-                <html>
-                <head>
-                <meta charset="utf-8">
-                <title>Reset Password</title>
-                </head>
-                <body>
-                <p>Click the following link to reset your password:</p>
-                <p>${resetUrl}</p> 
-                <p>This link lasts 5 minutes.</p>
-                </body>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Forgot Password</title>
+            </head>
+            <body>
+              <div style="background-color: #f1f1f1; padding: 20px;">
+                <div style="background-color: #ffffff; max-width: 600px; margin: 0 auto; padding: 20px;">
+                  <h2>Forgot Password</h2>
+                  <p>Hello,</p>
+                  <p>You recently requested to reset your password. Click the button below to reset it.</p>
+                  <div style="text-align: center; margin-top: 30px;">
+                    <a href="${resetUrl}" style="display: inline-block; background-color: #007bff; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Reset Password</a>
+                  </div>
+                  <p>If you didn't request a password reset, please ignore this email.</p>
+                  <p>Best regards,</p>
+                  <p>Estetikin Team</p>
+                </div>
+              </div>
+            </body>
             </html>`,
         };
-
         transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 console.log(err);

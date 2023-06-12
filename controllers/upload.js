@@ -3,7 +3,7 @@ const { Storage } = require('@google-cloud/storage');
 const mysql = require("mysql");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
-
+const jwt = require("jsonwebtoken");
 exports.uploadImage = (req, res) => {
   try {
     const db = mysql.createConnection({
@@ -16,15 +16,18 @@ exports.uploadImage = (req, res) => {
     upload.single('image')(req, res, (err) => {
       if (err) {
         console.error(err);
-        return res.status(500).json({ error: 'Failed to upload image' });
+        return res.status(500).json({ error: true, message: 'Upload Error' });
       }
 
-      console.log(req.body.email);
+      const authorizationHeader = req.headers.authorization;
+      const token = authorizationHeader.split(' ')[1];
+      const decoded = jwt.decode(token, process.env.JWT_SECRET);
+      const email=decoded.email;
       console.log(req.body.class1);
       console.log(req.body.class2);
       console.log(req.body.class3);
       console.log(req.body.class4);
-      const { email, class1, class2, class3, class4 } = req.body;
+      const {class1, class2, class3, class4} = req.body;
 
       db.connect((error) => {
         if (error) {
@@ -50,7 +53,7 @@ exports.uploadImage = (req, res) => {
           const test = count + 1;
           console.log(test);
           const fileName = test + '.jpeg';
-          const link = 'https://storage.googleapis.com/test-gambar-estetikin123/' + test + '.jpeg';
+          const link = process.env.ALBUM_LINK + test + '.jpeg';
           const currentDate = new Date();
           const formattedDate = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
@@ -88,7 +91,7 @@ exports.uploadImage = (req, res) => {
 
 async function uploadToGCS(fileBuffer, fileName) {
   const storage = new Storage();
-  const bucket = storage.bucket('test-gambar-estetikin123');
+  const bucket = storage.bucket(process.env.ALBUM_BUCKET);
   const file = bucket.file(fileName);
   await file.save(fileBuffer);
   console.log(`File ${fileName} uploaded to GCS`);
