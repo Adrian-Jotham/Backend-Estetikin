@@ -1,7 +1,0 @@
-steps:
-  - name: 'node:18'
-    entrypoint: 'npm'
-    args: ['install']
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['app', 'deploy']
