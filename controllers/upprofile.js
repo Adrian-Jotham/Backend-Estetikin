@@ -4,6 +4,7 @@ const mysql = require("mysql");
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 const jwt = require("jsonwebtoken");
+const shortid = require("shortid");
 exports.uploadprofile = (req, res) => {
     try {
         const db = mysql.createConnection({
@@ -29,8 +30,6 @@ exports.uploadprofile = (req, res) => {
                     return;
                 }
                 const fileBuffer = req.file.buffer;
-                const fileName = email + '.jpeg';
-                const link = process.env.PROFILE_LINK + email + '.jpeg';
                 db.query('SELECT profilepicture FROM user WHERE email = ?',[email],(err,results)=>{
                     if (err) {
                         console.log(err);
@@ -39,9 +38,14 @@ exports.uploadprofile = (req, res) => {
                         });
                     }
                     if (results[0].profilepicture!= null){
-                        deleteFileinGCS(fileName);
+                        picname = results[0].profilepicture.replace(process.env.PROFILE_LINK, '');
+                        console.log(picname);
+                        deleteFileinGCS(picname);
                     }
                 })
+                const random=shortid.generate();
+                const fileName = email + random + '.jpeg';
+                const link = process.env.PROFILE_LINK + email + random + '.jpeg';
                 db.query('UPDATE user SET profilepicture = ? WHERE email = ?', [link, email], (err, results) => {
                     if (err) {
                         console.log(err);
@@ -49,7 +53,7 @@ exports.uploadprofile = (req, res) => {
                             res.status(500).json({ error: 'Failed to insert DB' });
                         });
                     }
-                    // Upload the image to GCS
+                    //Upload the image to GCS
                     uploadToGCS(fileBuffer, fileName)
                         .then(() => {
                             db.end(() => {
