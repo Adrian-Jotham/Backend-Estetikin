@@ -144,44 +144,74 @@ exports.data =
                     {
                         id : 1,
                         title : 'The Squat',
-                        description : 'Jongkok adalah pose yang bagus untuk pemotretan yang keren dan saat ini populer di kalangan street-style fashion lookbook. Hal ini karena pose ini terlihat fantastis sambil menunjukkan dengan baik pakaian yang dikenakan. Anda dapat memotret ini dari berbagai sudut dan tinggi. Minta model Anda untuk jongkok dan menunjukkan sikap yang percaya diri ke arah kamera. Anda juga dapat mengambil foto tanpa suasana tersebut. Namun, pose ini tidak bekerja dengan baik sebagai foto yang "bagus" dalam arti biasanya.',
-                        url : 'https://storage.googleapis.com/assetmodule/EvanJotham.JPG'
+                        description : '',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-1-Squat.webp'
                     },
                     {
                         id:2,
-                        title : 'Aktifkan Mode HDR',
-                        description : 'Aktifkan mode High Dynamic Range (HDR) pada aplikasi kamera Anda. Mode ini membantu menghasilkan gambar dengan rentang dinamis yang lebih baik dalam situasi pencahayaan yang kontras',
-                        url : 'https://storage.googleapis.com/assetmodule/IgelBobo.JPG'
+                        title : 'One Leg Up',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-2-One-Leg-Up.webp'
                     },
                     {
                         id:3,
-                        title : 'Gunakan Fokus Manual',
-                        description : 'Gunakan fokus manual pada aplikasi kamera Anda untuk memastikan fokus yang tepat pada objek utama. Sentuh layar pada objek yang ingin Anda fokuskan dan atur fokus secara manual jika diperlukan',
-                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
+                        title : 'Incoporating a Prop',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-3-Prop.webp'
                     },
                     {
                         id:4,
-                        title : 'Atur Kompensasi Eksposur',
-                        description : 'Gunakan fitur kompensasi eksposur pada aplikasi kamera untuk mengatur tingkat kecerahan gambar. Sesuaikan pengaturan ini agar gambar tidak terlalu terang atau terlalu gelap.',
-                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
+                        title : 'Sitting in a Backward Chair',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-4-Chair-Backward.webp'
                     },
                     {
                         id:5,
-                        title : 'Gunakan Lampu Bantu',
-                        description : 'Jika pencahayaan tidak cukup, Anda bisa menggunakan lampu bantu atau sumber cahaya tambahan untuk memberikan pencahayaan ekstra pada objek yang akan Anda foto.',
-                        url : 'https://storage.googleapis.com/assetmodule/IgelBobo.JPG'
+                        title : 'Kneeling or Sitting on Knees',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-5-Kneeling.webp'
                     },
                     {
                         id:6,
-                        title : 'Jaga Kestabilan',
-                        description : 'Pastikan Anda menjaga kestabilan saat mengambil gambar. Gunakan tripod atau stabilizer jika perlu, atau tahan ponsel Anda dengan tangan yang stabil untuk menghindari gambar yang buram akibat gerakan',
-                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
+                        title : 'Legs Spread On a Chair',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-6-Legs-Spread.webp'
                     },
                     {
                         id:7,
-                        title : '',
+                        title : 'Crossed Arms',
                         description : '-',
-                        url : 'https://storage.googleapis.com/assetmodule/StragelMakan.JPG'
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-7-Crossed-Arms.webp'
+                    },
+                    {
+                        id:8,
+                        title : 'The Cat Walk',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-8-Catwalk.webp'
+                    },
+                    {
+                        id:9,
+                        title : 'Hands Reaching Toward the Camera',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-9-Hands-Toward-Camera.webp'
+                    },
+                    {
+                        id:10,
+                        title : 'Hands in Pockets',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-10-Hands-In-Pocket.webp'
+                    },
+                    {
+                        id:11,
+                        title : 'Action Shots',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-11-In-Action.webp'
+                    },
+                    {
+                        id:12,
+                        title : 'Hands Behind the Back',
+                        description : '-',
+                        url : 'https://storage.googleapis.com/assetmodule/Model-Poses-12-Hands-Behind-Back.webp'
                     },
                 ],
         },
