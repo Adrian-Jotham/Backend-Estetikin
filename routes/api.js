@@ -7,6 +7,7 @@ const upprofileController = require('../controllers/upprofile');
 const profileController = require('../controllers/profile')
 const express = require("express");
 const router = express.Router();
+
 router.get('/module',isLoggedIn,moduleController.getModules);
 router.get('/album',isLoggedIn,albumController.album);
 router.get('/article/:type',isLoggedIn,articleController.getArticle);

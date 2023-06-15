@@ -1,4 +1,4 @@
-const artikelData = require('./artikeldata')
+const artikelData = require('./asset/artikeldata')
 
 const getArticle = (req, res) => {
     try{
