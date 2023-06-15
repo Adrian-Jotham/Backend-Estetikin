@@ -19,7 +19,6 @@ exports.uploadprofile = (req, res) => {
                 console.error(err);
                 return res.status(500).json({ error: 'Failed to upload image' });
             }
-
             const authorizationHeader = req.headers.authorization;
             const token = authorizationHeader.split(' ')[1];
             const decoded = jwt.decode(token, process.env.JWT_SECRET);

@@ -48,7 +48,6 @@ exports.login = async (req, res) => {
                     expires: new Date(
                         Date.now() + process.env.JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000
                     ),
-                    // httpOnly: true
                 }
                 res.cookie('userSave', token, cookieOptions);
                 res.status(200).json({
@@ -224,7 +223,7 @@ exports.forgetpassword = async (req, res) => {
             return res.status(404).json({ error: true, message: 'User not found' });
         }
 
-        const resetUrl = `estetikin://reset?token=${resetToken}`;
+        const resetUrl = `estetikin://reset_password?token=${resetToken}`;
 
         var transporter = nodemailer.createTransport({
             host: 'smtp.zoho.com',
@@ -257,6 +256,7 @@ exports.forgetpassword = async (req, res) => {
                   <p>Hello,</p>
                   <p>You recently requested to reset your password. Click the button below to reset it.</p>
                   <div style="text-align: center; margin-top: 30px;">
+                    <p>${resetUrl}<p>
                     <a href="${resetUrl}" style="display: inline-block; background-color: #007bff; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Reset Password</a>
                   </div>
                   <p>If you didn't request a password reset, please ignore this email.</p>
