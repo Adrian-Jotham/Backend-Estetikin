@@ -12,6 +12,7 @@ env_variables:
   PROFILE_BUCKET: estetikin-acc-prof331
   ALBUM_LINK: https://storage.googleapis.com/test-gambar-estetikin123/
   PROFILE_LINK: https://storage.googleapis.com/estetikin-acc-prof331/
+  URL_RESET: https://estetikin.et.r.appspot.com/auth/v1/checkreset
   MAIL_USER : reset.estetikin@shirologic.online
   MAIL_PASS : "@99887766Qq"
   JWT_SECRET: jothamganteng

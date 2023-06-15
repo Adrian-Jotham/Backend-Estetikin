@@ -223,7 +223,7 @@ exports.forgetpassword = async (req, res) => {
             return res.status(404).json({ error: true, message: 'User not found' });
         }
 
-        const resetUrl = `estetikin://reset_password?token=${resetToken}`;
+        const resetUrl = `https://estetikin.et.r.appspot.com/redirect/redirpass?token=${resetToken}`;
 
         var transporter = nodemailer.createTransport({
             host: 'smtp.zoho.com',
@@ -281,7 +281,6 @@ exports.checkReset = (req, res) => {
     console.log(req.body)
     const { password, passwordConfirm, resetToken } = req.body;
     console.log(password);
-    console.log(passwordConfirm);
     console.log(resetToken);
     try {
         const resetToken2 = resetToken.split(' ')[1];

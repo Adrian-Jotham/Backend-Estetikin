@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Redirect Estetikin</title>
+  <script>
+    function redirectToMobileApp() {
+      var deepLink = 'estetikin://reset_password?token=YOUR_TOKEN_HERE';
+      window.location.href = deepLink;
+    }
+  </script>
+</head>
+<body onload="redirectToMobileApp()">
+  <h1>Redirecting to Mobile App...</h1>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Input Modul dan Langkah</title>
+  <script>
+    // Fungsi untuk menambahkan langkah baru
+    function addStep() {
+      var stepCount = document.getElementsByClassName("step").length;
+      
+      var newStep = document.createElement("div");
+      newStep.className = "step";
+      
+      var stepLabel = document.createElement("label");
+      stepLabel.textContent = "Step " + (stepCount + 1) + ":";
+      
+      var stepInput = document.createElement("input");
+      stepInput.type = "text";
+      stepInput.name = "langkah" + (stepCount + 1);
+      stepInput.required = true;
+      
+      var stepImageLabel = document.createElement("label");
+      stepImageLabel.textContent = "Gambar " + (stepCount + 1) + ":";
+      
+      var stepImageInput = document.createElement("input");
+      stepImageInput.type = "file";
+      stepImageInput.name = "gambar" + (stepCount + 1);
+      stepImageInput.accept = "image/*";
+      stepImageInput.required = true;
+      
+      newStep.appendChild(stepLabel);
+      newStep.appendChild(document.createElement("br"));
+      newStep.appendChild(stepInput);
+      newStep.appendChild(document.createElement("br"));
+      newStep.appendChild(stepImageLabel);
+      newStep.appendChild(document.createElement("br"));
+      newStep.appendChild(stepImageInput);
+      
+      var stepsContainer = document.getElementById("steps-container");
+      stepsContainer.appendChild(newStep);
+    }
+  </script>
+</head>
+<body>
+  <h1>Input Modul dan Langkah</h1>
+  
+  <form action="/submit" method="POST">
+    <label for="modul">Modul:</label>
+    <input type="text" id="modul" name="modul" required><br><br>
+    
+    <div id="steps-container">
+      <div class="step">
+        <label for="langkah1">Step 1:</label>
+        <input type="text" id="langkah1" name="langkah1" required><br><br>
+        
+        <label for="gambar1">Gambar 1:</label>
+        <input type="file" id="gambar1" name="gambar1" accept="image/*" required><br><br>
+      </div>
+    </div>
+    
+    <button type="button" onclick="addStep()">Tambah Langkah</button><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>

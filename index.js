@@ -18,6 +18,8 @@ const db = mysql.createConnection({
     password: process.env.PASSWORD_PASS,
     database: process.env.DATABASE
 });
+app.set('view engine', 'ejs'); 
+app.set('views', path.join(__dirname, 'views'));
 // const db = mysql.createPool({
 //     connectionLimit: 10,
 //     user: process.env.DATABASE_USER,
@@ -41,12 +43,14 @@ app.use('/auth/v1', (req, res, next) => {
 app.use('/album', (req, res, next) => {
     upload.none()(req, res, next);
 }, require('./routes/album'));
-
+app.set('view engine', 'ejs'); 
+app.set('views', path.join(__dirname, 'views')); 
 app.use('/upload', require('./routes/upload'));
 app.use('/module', require('./routes/module'));
 app.use('/articles', require('./routes/artikel'));
 app.use('/api/v1',require('./routes/api'));
 app.use('/', require('./routes/landingtest'));
+app.use('/redirect',require('./routes/redir'));
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
