@@ -433,6 +433,7 @@ exports.data =
         },
         {
             id : 8,
+            tag : 'Android',
             title : 'Belajar Fotografi level Menengah untuk menghasilkan kualitas gambar yang lebih baik',
             description : 'ini deskripsi dari si judulnya',
             genre : 'android',
