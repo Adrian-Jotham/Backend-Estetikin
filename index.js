@@ -45,9 +45,7 @@ app.use('/album', (req, res, next) => {
 }, require('./routes/album'));
 app.set('view engine', 'ejs'); 
 app.set('views', path.join(__dirname, 'views')); 
-app.use('/upload', require('./routes/upload'));
-app.use('/module', require('./routes/module'));
-app.use('/articles', require('./routes/artikel'));
+
 app.use('/api/v1',require('./routes/api'));
 app.use('/', require('./routes/landingtest'));
 app.use('/redirect',require('./routes/redir'));

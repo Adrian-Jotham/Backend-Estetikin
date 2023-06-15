@@ -1,4 +1,4 @@
-const modulesData = require('./moduledata')
+const modulesData = require('./asset/moduledata')
 
 const getModules = async (req, res) => {
     return res.status(200).json(
