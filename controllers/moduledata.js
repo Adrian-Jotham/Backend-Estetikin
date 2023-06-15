@@ -37,6 +37,7 @@ exports.data =
         },
         {
             id : 2,
+            tag: 'DSLR',
             title : 'Belajar Mengatur Tingkat Keterangan/Cahaya Gambar pada Kamera ',
             description : 'ini deskripsi dari si judulnya',
             genre : 'android',
@@ -83,6 +84,7 @@ exports.data =
         },
         {
             id : 3,
+            tag: 'Android',
             title : 'Belajar Fotografi level Menengah untuk menghasilkan kualitas gambar yang lebih baik ',
             description : 'ini deskripsi dari si judulnya',
             genre : 'android',
@@ -135,6 +137,7 @@ exports.data =
         },
         {
             id : 4,
+            tag: 'Iphone',
             title : 'Belajar Pose untuk membuat fotografi Model menjadi lebih menarik',
             description : 'Untuk membuat fotografimu bersama model menjadi lebih asik, coba beberapa pose yang kami sarankan dibawah ini:',
             genre : 'android',
@@ -187,6 +190,7 @@ exports.data =
         },
         {
             id : 5,
+            tag: 'DSLR',
             title : 'Pengaturan Dasar Kamera pada Smartphone',
             description : 'Dalam modul ini diberikan panduan beberapa pengaturan dasar pada kamera smartphone yang dapat meningkatkan pengalaman fotografimu.',
             genre : 'android',
@@ -263,6 +267,7 @@ exports.data =
         },
         {
             id : 6,
+            tag: 'Iphone',
             title : 'Belajar Foto dengan Objek Berada di Tengah Frame',
             description : 'Pada tutorial ini, akan diberikan panduan tentang cara menggunakan grid pada kamera smartphone untuk memfokuskan objek dengan presisi di tengah bingkai foto.',
             genre : 'android',
