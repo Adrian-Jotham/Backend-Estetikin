@@ -63,10 +63,10 @@ exports.album = (req,res) => {
               str3 = "Wow! Pencahayaan pada gambar ini sudah pas! Gambar yang kamu tangkap memiliki detail dengan baik dan terlihat jelas.\nKarena kamu sudah bisa mengatur pencahayaan dengan sempurna. Teruslah mengambil foto dengan pencahayaan yang baik seperti ini dan periksa modul modul belajar fotografi kami untuk meningkatkan skill mu!";
               break;
             case 1:
-              str3 = "Foto Anda terlihat terlalu terang kawan ☹ Anda bisa mencoba mengurangi pencahayaan atau menyesuaikan pengaturan kecerahan pada kamera hape Anda agar mendapatkan hasil yang lebih seimbang.\nButuh bantuan lebih lengkap? Cek modul kami!";
+              str3 = "Gambar ini terlihat terlalu gelap.. apabila tidak sengaja, mungkin Anda perlu menyesuaikan pengaturan pencahayaan pada kamera hape Anda untuk mendapatkan hasil yang lebih terang dan jelas.\nJika masih kurang cukup, coba mencari sumber cahaya yang lebih terang disekitarmu!\nButuh bantuan lebih lengkap? Cek modul kami!";
               break;
             case 2:
-              str3 = "Gambar ini terlihat terlalu gelap.. apabila tidak sengaja, mungkin Anda perlu menyesuaikan pengaturan pencahayaan pada kamera hape Anda untuk mendapatkan hasil yang lebih terang dan jelas.\nJika masih kurang cukup, coba mencari sumber cahaya yang lebih terang disekitarmu!\nButuh bantuan lebih lengkap? Cek modul kami!";
+              str3 = "Foto Anda terlihat terlalu terang kawan ☹ Anda bisa mencoba mengurangi pencahayaan atau menyesuaikan pengaturan kecerahan pada kamera hape Anda agar mendapatkan hasil yang lebih seimbang.\nButuh bantuan lebih lengkap? Cek modul kami!";
               break;
           }
         
@@ -78,7 +78,7 @@ exports.album = (req,res) => {
               str4 = "Oops, Untuk hasil yang lebih baik, coba perhatikan posisi objek utama agar tepat berada di tengah frame. Ini akan membantu menciptakan keseimbangan visual dan membuat gambar lebih menonjol.\nMasih belum bisa mengambil gambar dengan objek berada ditengah? Coba buka buku modul panduan dari kami!";
               break;
           }
-          const text=str2+'\n'+str1+'\n'+str3+'\n'+str4
+          const text=str2+'\n'+'\n'+str1+'\n'+'\n'+str3+'\n'+'\n'+str4
           return text;
       } 
         const dummytext = classifyText(class1,class2,class3,class4);
