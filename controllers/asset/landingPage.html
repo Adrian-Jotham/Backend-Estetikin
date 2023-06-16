@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Landing page for providing necessary API documentation for Etetikin application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+
+        header {
+            background-color: #0dc9b0;
+            padding: 20px;
+            text-align: left;
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+        }
+
+        section {
+            margin: 40px;
+        }
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        section{
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>This is estetikin API Documentation</h1>
+        <nav>
+            <ul>
+                <li><a href="#auth">Authorization</a></li>
+                <li><a href="#modul">Modules</a></li>
+                <li><a href="#artikel">Article</a></li>
+                <li><a href="#profil">Profile</a></li> 
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2 id="auth">Authorization</h2>
+        <p>Estetikin used SQL-based database for user authentication.</p>
+        <ul>
+            <li><strong>POST REGISTER</strong></li>
+                <p>This is register request params</p>
+                <ul>
+                    <li>name            : {name}</li>
+                    <li>email           : {email}</li>
+                    <li>nickname        : {nickname}</li>
+                    <li>password        : {password}</li>
+                    <li>passwordConfirm : {password}</li>
+                </ul>
+            <li><strong>POST LOGIN</strong></li>
+                <p>This is login request params</p>
+                <ul>
+                    <li>email : {email}</li>
+                    <li>password : {password}</li>
+                </ul>
+        </ul>
+    </section>
+    <section>
+        <h2 id="modul">Modules</h2>
+        <p>Modules is a place for user to gain knowledge about photography from the estetikin team's selected modules</p>
+        <ul>
+            <li><strong>GET MODULES</strong></li>
+            <p>This is register request params</p>
+            <ul>
+                <li>name : {name}</li>
+                <li>email : {email}</li>
+                <li>nickname : {nickname}</li>
+                <li>password : {password}</li>
+                <li>passwordConfirm : {password}</li>
+            </ul>
+        </ul>
+    </section>
+    <section>
+        <h2 id="artikel">Article</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacinia pellentesque mi, sit amet venenatis
+            justo dignissim eget. Sed id ligula sed leo hendrerit eleifend. Nulla consequat tellus vel diam ullamcorper
+            dapibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Etiam
+            sagittis mauris vel ullamcorper laoreet. Mauris fringilla enim sed mi sollicitudin, id fermentum justo
+            sagittis. Nunc
+
+    <footer>
+        <p>&copy; 2023 Simple HTML Landing Page. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
