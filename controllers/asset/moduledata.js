@@ -6,7 +6,7 @@ exports.data =
             title : 'Belajar Memfokuskan Lensa Kamera',
             description : 'Modul ini untuk kamu yang masih bingung cara mengambil gambar dengan lensa fokus untuk menghasilkan gambar yang lebih jernih',
             genre : 'android',
-            url : 'https://storage.googleapis.com/assetmodule/BungaPink.JPG',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_focuse.png',
             content : 
                 [
                     {
@@ -41,7 +41,7 @@ exports.data =
             title : 'Belajar Mengatur Tingkat Keterangan/Cahaya Gambar pada Kamera',
             description : 'modul ini dirancang untuk memperluas pengetahuan dan keterampilan fotografi Anda dalam mengatur tingkat keterangan atau cahaya gambar pada kamera.',
             genre : 'android',
-            url : 'https://storage.googleapis.com/assetmodule/BungaPink.JPG',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_lighting.png',
             content : 
                 [
                     {
@@ -88,7 +88,7 @@ exports.data =
             title : 'Tips dan Teknik Fotografi Dasar',
             description : 'Di modul ini, kamu akan menemukan tips seputar teknis dan prosedur mengutilisasi kamera, mulai dari cara memegang kamera, mengenal exposure, mengendalikan mode kamera dan masih banyak lagi. Kamu bisa mencobanya satu per satu dan belajar secara otodidak. Yuk, kita simak ulasan selengkapnya dan pahami perlahan-lahan macam-macam teknik fotografi di bawah ini.',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_dasar.png',
             content : 
                 [
                     {
@@ -171,7 +171,7 @@ exports.data =
             title : 'Belajar Pose untuk membuat fotografi Model menjadi lebih menarik',
             description : 'Untuk membuat fotografimu bersama model menjadi lebih asik, coba beberapa pose yang kami sarankan dibawah ini:',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_centered.png',
             content : 
                 [
                     {
@@ -254,7 +254,7 @@ exports.data =
             title : 'Pengaturan Dasar Kamera pada Smartphone',
             description : 'Dalam modul ini diberikan panduan beberapa pengaturan dasar pada kamera smartphone yang dapat meningkatkan pengalaman fotografimu.',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_centered.png',
             content : 
                 [
                     {
@@ -327,11 +327,11 @@ exports.data =
         },
         {
             id : 6,
-            tag: 'IOS',
+            tag: 'DSLR',
             title : 'Belajar Foto dengan Objek Berada di Tengah Frame',
             description : 'Pada tutorial ini, akan diberikan panduan tentang cara menggunakan grid pada kamera smartphone untuk memfokuskan objek dengan presisi di tengah bingkai foto.',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_dasar.png',
             content : 
                 [
                     {
@@ -378,7 +378,7 @@ exports.data =
             title : 'Tips Memotret di Malam Hari dengan Kamera Smartphone',
             description : 'Ingin tahu cara memotret di malam hari menggunakan kamera smartphone? Jangan khawatir! Jangan khawatir, di tutorial ini akan diberikan tips dan teknik untuk memotret di malam hari menggunakan kamera smartphone. Dengan mengikuti langkah-langkah ini, kamu dapat menghasilkan foto yang berkualitas bahkan di kondisi malam hari.',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_dasar.png',
             content : 
                 [
                     {
@@ -433,10 +433,11 @@ exports.data =
         },
         {
             id : 8,
+            tag : 'DSLR',
             title : 'Belajar Fotografi level Menengah untuk menghasilkan kualitas gambar yang lebih baik',
             description : 'ini deskripsi dari si judulnya',
             genre : 'android',
-            url : 'https://keren123',
+            url : 'https://storage.googleapis.com/assetmodule/ic_module_dasar.png',
             content : 
                 [
                     {
